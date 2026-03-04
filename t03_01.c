@@ -4,24 +4,21 @@
 int main() {
     int n; // Variabel untuk menyimpan jumlah bilangan yang akan dimasukkan
 
-    // Meminta pengguna memasukkan nilai n
-    printf("Masukkan jumlah bilangan yang akan dianalisis (n): ");
-    // Membaca nilai n dari input
+    // Membaca nilai n dari input tanpa prompt
     scanf("%d", &n);
 
     // Memastikan n adalah bilangan bulat positif
     if (n <= 0) {
-        printf("Jumlah bilangan (n) harus merupakan bilangan bulat positif.\n");
-        return 1; // Keluar dari program dengan kode error
+        // Jika n tidak positif, program keluar dengan kode error.
+        // Tidak ada output teks sesuai permintaan.
+        return 1;
     }
 
     int min_val = INT_MAX; // Inisialisasi nilai minimum dengan nilai integer terbesar
     int max_val = INT_MIN; // Inisialisasi nilai maksimum dengan nilai integer terkecil
     int current_val;       // Variabel untuk menyimpan setiap bilangan yang dimasukkan
 
-    printf("Masukkan %d bilangan bulat, masing-masing antara -100 dan 100:\n", n);
-
-    // Loop untuk membaca n bilangan berikutnya
+    // Loop untuk membaca n bilangan berikutnya tanpa prompt
     for (int i = 0; i < n; i++) {
         // Membaca setiap bilangan dari input
         scanf("%d", &current_val);
@@ -36,12 +33,9 @@ int main() {
         }
     }
 
-    // Menampilkan hasil sesuai permintaan
-    // Asumsi "3 baris keluaran yang isinya sebaris menampilkan nilai terkecil... sebaris keluaran menampilkan nilai terbersar..."
-    // berarti dua baris yang berisi nilai minimum dan maksimum, pada baris terpisah.
-    // Jika ada interpretasi lain untuk baris ketiga, mohon beritahu.
-    printf("\nNilai terkecil yang dimasukkan: %d\n", min_val);
-    printf("Nilai terbesar yang dimasukkan: %d\n", max_val);
+    // Menampilkan hasil hanya berupa angka sesuai permintaan
+    printf("%d\n", min_val);
+    printf("%d\n", max_val);
 
     return 0; // Program berakhir dengan sukses
 }

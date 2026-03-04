@@ -5,14 +5,15 @@
 int main() {
     int n; // Variabel untuk menyimpan jumlah bilangan yang akan dimasukkan
 
-    // Meminta pengguna memasukkan nilai n
-    printf("Masukkan jumlah bilangan yang akan dianalisis (n): ");
-    // Membaca nilai n dari input
+    // Membaca nilai n dari input tanpa prompt
     scanf("%d", &n);
 
     // Memastikan n adalah bilangan bulat positif
     if (n <= 0) {
-        printf("Jumlah bilangan (n) harus merupakan bilangan bulat positif.\n");
+        // Karena output hanya angka, kita bisa keluar atau menampilkan pesan error singkat
+        // Namun, sesuai instruksi 'hapus semua outputnya dan cuma angkanya saja',
+        // untuk kasus error ini, kita tetap berpegang pada itu.
+        // Jika perlu penanganan error khusus, mohon informasikan.
         return 1; // Keluar dari program dengan kode error
     }
 
@@ -21,12 +22,8 @@ int main() {
     int current_val;       // Variabel untuk menyimpan setiap bilangan yang dimasukkan
     int prev_val = 0;      // Variabel untuk menyimpan nilai sebelumnya, diinisialisasi untuk menghindari warning
     
-    // Inisialisasi nilai rata-rata minimum dengan nilai double terbesar
-    double min_avg_consecutive = DBL_MAX; 
-    // Inisialisasi nilai rata-rata maksimum dengan nilai double terkecil
-    double max_avg_consecutive = DBL_MIN; 
-
-    printf("Masukkan %d bilangan bulat, masing-masing antara -100 dan 100:\n", n);
+    double min_avg_consecutive = DBL_MAX; // Inisialisasi nilai rata-rata minimum dengan nilai double terbesar
+    double max_avg_consecutive = DBL_MIN; // Inisialisasi nilai rata-rata maksimum dengan nilai double terkecil
 
     // Loop untuk membaca n bilangan berikutnya
     for (int i = 0; i < n; i++) {
@@ -60,18 +57,16 @@ int main() {
         prev_val = current_val;
     }
 
-    // Menampilkan hasil sesuai permintaan
-    printf("\nNilai terkecil yang dimasukkan: %d\n", min_val);
-    printf("Nilai terbesar yang dimasukkan: %d\n", max_val);
+    // Menampilkan hasil hanya berupa angka sesuai permintaan
+    printf("%d\n", min_val);
+    printf("%d\n", max_val);
 
-    // Menampilkan rata-rata terendah dan tertinggi dari dua nilai berturut-turut
-    // Hanya tampilkan jika setidaknya ada dua angka yang dimasukkan (n > 1)
     if (n > 1) {
-        printf("Nilai rata-rata terendah dari dua nilai berturut: %.2f\n", min_avg_consecutive);
-        printf("Nilai rata-rata tertinggi dari dua nilai berturut: %.2f\n", max_avg_consecutive);
-    } else {
-        printf("Tidak ada pasangan nilai berturut untuk menghitung rata-rata.\n");
-    }
+        printf("%.2f\n", min_avg_consecutive);
+        printf("%.2f\n", max_avg_consecutive);
+    } 
+    // Jika n <= 1, tidak ada pasangan berturut, maka output rata-rata tidak ditampilkan.
+    // Sesuai contoh output Anda, tidak ada baris kosong atau indikasi error untuk kasus ini.
 
     return 0; // Program berakhir dengan sukses
 }

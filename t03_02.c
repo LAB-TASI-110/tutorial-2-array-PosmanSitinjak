@@ -1,20 +1,18 @@
 #include <stdio.h>  // Untuk fungsi input/output seperti scanf dan printf
 #include <limits.h> // Untuk INT_MAX dan INT_MIN, nilai batas integer
 #include <float.h>  // Untuk DBL_MAX, nilai batas double
-#include <math.h>   // Untuk fmin (opsional, bisa diganti if-else)
 
 int main() {
     int n; // Variabel untuk menyimpan jumlah bilangan yang akan dimasukkan
 
-    // Meminta pengguna memasukkan nilai n
-    printf("Masukkan jumlah bilangan yang akan dianalisis (n): ");
-    // Membaca nilai n dari input
+    // Membaca nilai n dari input tanpa prompt
     scanf("%d", &n);
 
     // Memastikan n adalah bilangan bulat positif
     if (n <= 0) {
-        printf("Jumlah bilangan (n) harus merupakan bilangan bulat positif.\n");
-        return 1; // Keluar dari program dengan kode error
+        // Jika n tidak positif, program keluar dengan kode error.
+        // Tidak ada output teks sesuai permintaan.
+        return 1;
     }
 
     int min_val = INT_MAX; // Inisialisasi nilai minimum dengan nilai integer terbesar
@@ -25,9 +23,7 @@ int main() {
     // Inisialisasi nilai rata-rata minimum dengan nilai double terbesar
     double min_avg_consecutive = DBL_MAX; 
 
-    printf("Masukkan %d bilangan bulat, masing-masing antara -100 dan 100:\n", n);
-
-    // Loop untuk membaca n bilangan berikutnya
+    // Loop untuk membaca n bilangan berikutnya tanpa prompt
     for (int i = 0; i < n; i++) {
         // Membaca setiap bilangan dari input
         scanf("%d", &current_val);
@@ -54,17 +50,16 @@ int main() {
         prev_val = current_val;
     }
 
-    // Menampilkan hasil sesuai permintaan
-    printf("\nNilai terkecil yang dimasukkan: %d\n", min_val);
-    printf("Nilai terbesar yang dimasukkan: %d\n", max_val);
+    // Menampilkan hasil hanya berupa angka sesuai permintaan
+    printf("%d\n", min_val);
+    printf("%d\n", max_val);
 
     // Menampilkan rata-rata terendah dari dua nilai berturut-turut
     // Hanya tampilkan jika setidaknya ada dua angka yang dimasukkan (n > 1)
     if (n > 1) {
-        printf("Nilai rata-rata terendah dari dua nilai berturut: %.2f\n", min_avg_consecutive);
-    } else {
-        printf("Tidak ada pasangan nilai berturut untuk menghitung rata-rata terendah.\n");
-    }
+        printf("%.2f\n", min_avg_consecutive);
+    } 
+    // Jika n <= 1, tidak ada pasangan berturut, maka output rata-rata tidak ditampilkan.
 
     return 0; // Program berakhir dengan sukses
 }
